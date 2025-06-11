@@ -1,4 +1,5 @@
 import Header from "./components/Header"
+import Modal from "./components/Modal"
 
 function App() {
 
@@ -6,6 +7,7 @@ function App() {
     <>
     <div className="h-dvh w-dvw bg-gray-900 font-mono">
       <Header/>
+      <Modal/>
     </div>
     </>
   )
