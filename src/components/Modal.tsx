@@ -1,11 +1,32 @@
+import { useEffect, useRef } from "react";
 import Button from "./Button";
 import Input from "./Input";
 
-const Modal = ({open,onClose}:any) => {
+interface ModalProps{
+  open: boolean;
+  onClose: ()=> void;
+}
+
+const Modal = ({open,onClose}:ModalProps) => {
+  const modalRef = useRef<HTMLDivElement>(null);
+  useEffect(()=>{
+    const handleClickOutside = (event: MouseEvent)=>{
+      if(modalRef.current && !modalRef.current.contains(event.target as Node)){
+        onClose();
+      }
+    }
+    if(open){
+        document.addEventListener("mousedown",handleClickOutside);
+      }
+      
+      return ()=> {
+        document.removeEventListener("mousedown",handleClickOutside);
+      }
+  },[open,onClose])
   return (
     <div>
       {open ? <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center backdrop-blur-xs">
-      <div className="p-4 rounded-2xl bg-slate-300 min-w-xs md:min-w-md">
+      <div ref={modalRef} className="p-4 rounded-2xl bg-slate-300 min-w-xs md:min-w-md">
         <div className="flex justify-between">
           <h1 className="mb-4 font-bold text-2xl ">Add New Content</h1>
           <p className="cursor-pointer" onClick={onClose}>X</p>
@@ -16,7 +37,7 @@ const Modal = ({open,onClose}:any) => {
         <Button text="Add Memory" />
         </div>
       </div>
-    </div> : <h1>not open</h1>}
+    </div> : null}
 
     </div>
   );
