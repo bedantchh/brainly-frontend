@@ -28,13 +28,13 @@ const Header = ({ onOpen }: any) => {
             <path d="M19.5 14.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
             </svg>Brainly
         </div>
-        <div style={{ display: "flex", gap: "1rem" }}>
+        <div className="flex gap-2">
           <Button
             svg={
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
+                width="16"
+                height="16"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -57,8 +57,8 @@ const Header = ({ onOpen }: any) => {
             svg={
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
+                width="16"
+                height="16"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"

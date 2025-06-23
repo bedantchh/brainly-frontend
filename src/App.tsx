@@ -11,7 +11,7 @@ function App() {
         <Header onOpen={() => setOpen(true)} />
         <Modal open={open} onClose={() => setOpen(false)} />
         <div className="max-w-5xl mx-auto mt-12">
-          <div className="flex gap-4 flex-wrap">
+          <div className="flex gap-4 flex-wrap px-4 md:px-10">
             <Card />
           </div>
         </div>
