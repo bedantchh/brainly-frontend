@@ -1,12 +1,14 @@
 const Card = () => {
   return (
-    <div className="w-56 bg-cyan-700 p-2 rounded-md hover:scale-105 transition-all">
-      <div className="w-full h-24 bg-white rounded-md"></div>
+    <div className="w-80 bg-shadow-green-500 hover:shadow-2xl hover:shadow-teal-100/20 p-4 rounded-2xl hover:-translate-y-1 transition-all">
+      <div className="w-full">
+        <iframe className="w-full h-full rounded-2xl" src="https://www.youtube.com/embed/-9azrdZEPCE?si=Fp3xdYAyTB5NaU6c" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+      </div>
       <div className="mt-2">
         <h1 className="font-bold text-base">
           <span>❤️</span> Title goes here
         </h1>
-        <div className="mt-4 flex justify-between items-center text-sm font-mediumtext-slate-900">
+        <div className="mt-4 flex justify-between items-center text-sm font-medium text-shadow-green-950">
             <svg
             xmlns="http://www.w3.org/2000/svg"
             width={18}

@@ -1,1 +1,15 @@
 @import "tailwindcss";
+
+@theme {
+  --color-shadow-green-50: #f4f9f7;
+  --color-shadow-green-100: #daede6;
+  --color-shadow-green-200: #b4dbce;
+  --color-shadow-green-300: #90c6b6;
+  --color-shadow-green-400: #5ea391;
+  --color-shadow-green-500: #448878;
+  --color-shadow-green-600: #346d60;
+  --color-shadow-green-700: #2d584f;
+  --color-shadow-green-800: #274840;
+  --color-shadow-green-900: #243d38;
+  --color-shadow-green-950: #112220;
+}
