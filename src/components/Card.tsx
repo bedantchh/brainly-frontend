@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import X from "../icons/x";
+import Yt from "../icons/Yt";
 
 type CardProps = {
   id?: string;
@@ -16,9 +18,12 @@ const Card = ({ id, title, type, link }: CardProps) => {
   return (
     <div key={id} className="w-80 h-fit min-h-56 bg-shadow-green-500 hover:shadow-2xl hover:shadow-teal-100/20 p-4 rounded-2xl hover:-translate-y-1 transition-all">
       <div className="mb-2 flex justify-between items-center">
+        <div className="flex gap-2 justify-between items-center">
+          {type==="twitter"? <X/>: <Yt/>}
         <h1 className="font-bold text-base">
-          <span>❤️</span> {title}
+          {title}
         </h1>
+        </div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width={18}
