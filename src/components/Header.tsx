@@ -2,7 +2,7 @@ import Button from "./Button";
 
 const Header = ({ onOpen }: any) => {
   return (
-    <div className="sticky top-[-1px] z-50">
+    <div className="sticky top-[-1px] z-40">
       <div className="bg-shadow-green-800 max-w-6xl mx-auto px-4 py-2 rounded-b-2xl flex items-center justify-between">
         <div className="text-white font-bold flex items-center gap-1 text-2xl cursor-pointer ">
             <svg
