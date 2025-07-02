@@ -7,7 +7,7 @@ import Modal from "../components/Modal"
 const Dashboard = () => {
       const [open, setOpen] = useState(false);
   return (
-    <div>
+    <>
         <Header onOpen={() => setOpen(true)} />
         <Modal open={open} onClose={() => setOpen(false)} />
         <div className="max-w-6xl mx-auto mt-12">
@@ -16,7 +16,7 @@ const Dashboard = () => {
             <Card title="Hello world" type="youtube" link="https://www.youtube.com/watch?v=WevY8WuTgJY"/>
           </div>
         </div>
-      </div>
+      </>
   )
 }
 
