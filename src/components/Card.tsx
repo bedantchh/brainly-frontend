@@ -12,15 +12,15 @@ type CardProps = {
 const Card = ({ id, title, type, link }: CardProps) => {
   const [loading,setLoading] = useState(true);
   useEffect(()=>{
-    const timeout =setTimeout(()=>setLoading(false),300)
+    const timeout =setTimeout(()=>setLoading(false),200)
     return ()=> clearTimeout(timeout)
   },[])
   return (
-    <div key={id} className="w-80 h-fit min-h-56 bg-shadow-green-500 hover:shadow-2xl hover:shadow-teal-100/20 p-4 rounded-2xl hover:-translate-y-1 transition-all">
+    <div key={id} className="min-h-56 bg-shadow-green-500 hover:shadow-2xl hover:shadow-teal-100/20 p-4 break-inside-avoid mb-4 rounded-2xl hover:-translate-y-1 transition-all">
       <div className="mb-2 flex justify-between items-center">
         <div className="flex gap-2 justify-between items-center">
           {type==="twitter"? <X/>: <Yt/>}
-        <h1 className="font-bold text-base">
+        <h1 className="font-semibold text-lg">
           {title}
         </h1>
         </div>
@@ -55,7 +55,7 @@ const Card = ({ id, title, type, link }: CardProps) => {
             allowFullScreen
           ></iframe>
         ) : (
-          <blockquote className="twitter-tweet">
+          <blockquote className="twitter-tweet"  data-conversation="none" data-cards="hidden">
             <a href={link}></a>
           </blockquote>
         ))}

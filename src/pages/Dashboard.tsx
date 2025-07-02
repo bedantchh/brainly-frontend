@@ -11,9 +11,12 @@ const Dashboard = () => {
         <Header onOpen={() => setOpen(true)} />
         <Modal open={open} onClose={() => setOpen(false)} />
         <div className="max-w-6xl mx-auto mt-12">
-          <div className="flex flex-col justify-center w-fit mx-auto md:flex-row  gap-4 flex-wrap px-4 md:px-10">
-            <Card title="Hello world" type="twitter" link="https://twitter.com/username/status/1939743280599900414"/>
-            <Card title="Hello world" type="youtube" link="https://www.youtube.com/watch?v=WevY8WuTgJY"/>
+          <div className="columns-1 md:columns-2 lg:columns-3 mx-auto gap-4 px-4 md:px-10">
+            
+            <Card title="Tit le" type="youtube" link="https://www.youtube.com/watch?v=WevY8WuTgJY"/>
+            <Card title="Title goes here" type="twitter" link="https://twitter.com/username/status/1939743280599900414"/>
+            <Card title="Tit le" type="youtube" link="https://www.youtube.com/watch?v=WevY8WuTgJY"/> 
+            <Card title="Tit le" type="youtube" link="https://www.youtube.com/watch?v=WevY8WuTgJY"/> 
           </div>
         </div>
       </>
