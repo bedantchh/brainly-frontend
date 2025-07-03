@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import X from "../icons/x";
+import X from "../icons/X";
 import Yt from "../icons/Yt";
 
 type CardProps = {
