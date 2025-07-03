@@ -1,4 +1,4 @@
-import { use, useEffect, useState } from "react";
+import {useEffect, useState } from "react";
 import Card from "../components/Card";
 import Header from "../components/Header";
 import Modal from "../components/Modal";
@@ -45,7 +45,11 @@ const Dashboard = () => {
   return (
     <>
       <Header onOpen={() => setOpen(true)} />
-      <Modal onSubmitSuccess={fetchContent} open={open} onClose={() => setOpen(false)} />
+      <Modal
+        onSubmitSuccess={fetchContent}
+        open={open}
+        onClose={() => setOpen(false)}
+      />
       <div className="max-w-6xl mx-auto mt-12">
         <div className="columns-1 md:columns-2 lg:columns-3 mx-auto gap-4 px-4 md:px-10">
           {userContent.map((c: ContentItem) => (
