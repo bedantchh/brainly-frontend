@@ -5,8 +5,8 @@ import Yt from "../icons/Yt";
 type CardProps = {
   id?: string;
   title: string;
-  type: "twitter" | "youtube";
-  link: string;
+  type?: "twitter" | "youtube";
+  link?: string;
 };
 
 const Card = ({ id, title, type, link }: CardProps) => {
@@ -48,7 +48,7 @@ const Card = ({ id, title, type, link }: CardProps) => {
         {loading ? <div className="w-full h-40 bg-gray-300 animate-pulse rounded-2xl"></div> : (type === "youtube" ? (
           <iframe
             className="w-full h-full rounded-2xl"
-            src={`https://www.youtube.com/embed/${link.split("?v=")[1]}`}
+            src={`https://www.youtube.com/embed/${link?.includes("watch?v=") ? link.split("?v=")[1] : link?.split(".be/")[1].split("?")[0]}`}
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerPolicy="strict-origin-when-cross-origin"
