@@ -1,10 +1,9 @@
-import {useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Card from "../components/Card";
 import Header from "../components/Header";
 import Modal from "../components/Modal";
 import axios from "axios";
 import { ErrorBoundary } from "react-error-boundary";
-import Button from "../components/Button";
 
 const Dashboard = () => {
   // enum ContentType {
@@ -43,10 +42,27 @@ const Dashboard = () => {
       console.error(e);
     }
   }
-  function fallback(){
-    return <>
-    <Card title="some error"/>
-    </>
+  function fallback() {
+    return (
+      <>
+        <p>Error</p>
+      </>
+    );
+  }
+  async function deleteCard(id:string) {
+    try {
+      const contentId = id;
+      await axios.delete(`${BACKEND_URL}/api/v1/delete`, {
+        headers: { Authorization: localStorage.getItem("token") },
+        data:{contentId:contentId}
+      } as any);
+      fetchContent();
+      // console.log(contentId)
+    } catch (error) {
+      console.error(error);
+    }
+
+    // console.log("delete this",id)
   }
   return (
     <>
@@ -59,30 +75,20 @@ const Dashboard = () => {
       <div className="max-w-6xl mx-auto mt-12">
         <div className="columns-1 md:columns-2 lg:columns-3 mx-auto gap-4 px-4 md:px-10">
           {userContent.map((c: ContentItem) => (
-            <ErrorBoundary key={c._id} FallbackComponent={fallback} onError={(e)=>console.error(e)}>
-              <Card  link={c.link} title={c.title} type={c.type} />
+            <ErrorBoundary
+              key={c._id}
+              FallbackComponent={fallback}
+              onError={(e) => console.error(e)}
+            >
+              <Card
+                id={c._id}
+                link={c.link}
+                title={c.title}
+                type={c.type}
+                deleteIt={deleteCard}
+              />
             </ErrorBoundary>
           ))}
-          {/* <Card
-            title="Tit le"
-            type="youtube"
-            link="https://www.youtube.com/watch?v=WevY8WuTgJY"
-          />
-          <Card
-            title="Title goes here"
-            type="twitter"
-            link="https://twitter.com/username/status/1939743280599900414"
-          />
-          <Card
-            title="Tit le"
-            type="youtube"
-            link="https://www.youtube.com/watch?v=WevY8WuTgJY"
-          />
-          <Card
-            title="Tit le"
-            type="youtube"
-            link="https://www.youtube.com/watch?v=WevY8WuTgJY"
-          /> */}
         </div>
       </div>
     </>

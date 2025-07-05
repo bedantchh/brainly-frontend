@@ -3,13 +3,14 @@ import X from "../icons/X";
 import Yt from "../icons/Yt";
 
 type CardProps = {
-  id?: string;
+  id: string;
   title: string;
   type?: "twitter" | "youtube";
   link?: string;
+  deleteIt:(id:string)=> void;
 };
 
-const Card = ({ id, title, type, link }: CardProps) => {
+const Card = ({ id, title, type, link,deleteIt }: CardProps) => {
   const [loading,setLoading] = useState(true);
   useEffect(()=>{
     const timeout =setTimeout(()=>setLoading(false),200)
@@ -24,6 +25,7 @@ const Card = ({ id, title, type, link }: CardProps) => {
           {title}
         </h1>
         </div>
+        <button onClick={()=>deleteIt(id)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width={18}
@@ -43,6 +45,7 @@ const Card = ({ id, title, type, link }: CardProps) => {
             <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
             <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
           </svg>
+          </button>
       </div>
       <div className="w-full">
         {loading ? <div className="w-full h-40 bg-gray-300 animate-pulse rounded-2xl"></div> : (type === "youtube" ? (
