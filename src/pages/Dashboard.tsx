@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Modal from "../components/Modal";
 import axios from "axios";
 import { ErrorBoundary } from "react-error-boundary";
+import Button from "../components/Button";
 
 const Dashboard = () => {
   // enum ContentType {
@@ -49,12 +50,12 @@ const Dashboard = () => {
       </>
     );
   }
-  async function deleteCard(id:string) {
+  async function deleteCard(id: string) {
     try {
       const contentId = id;
       await axios.delete(`${BACKEND_URL}/api/v1/delete`, {
         headers: { Authorization: localStorage.getItem("token") },
-        data:{contentId:contentId}
+        data: { contentId: contentId },
       } as any);
       fetchContent();
       // console.log(contentId)
@@ -74,21 +75,31 @@ const Dashboard = () => {
       />
       <div className="max-w-6xl mx-auto mt-12">
         <div className="columns-1 md:columns-2 lg:columns-3 mx-auto gap-4 px-4 md:px-10">
-          {userContent.map((c: ContentItem) => (
-            <ErrorBoundary
-              key={c._id}
-              FallbackComponent={fallback}
-              onError={(e) => console.error(e)}
-            >
-              <Card
-                id={c._id}
-                link={c.link}
-                title={c.title}
-                type={c.type}
-                deleteIt={deleteCard}
-              />
-            </ErrorBoundary>
-          ))}
+          {userContent.length > 0 ? (
+            userContent.map((c: ContentItem) => (
+              <ErrorBoundary
+                key={c._id}
+                FallbackComponent={fallback}
+                onError={(e) => console.error(e)}
+              >
+                <Card
+                  id={c._id}
+                  link={c.link}
+                  title={c.title}
+                  type={c.type}
+                  deleteIt={deleteCard}
+                />
+              </ErrorBoundary>
+            ))
+          ) : (
+            <div className="text-white absolute inset-0 flex justify-center items-center flex-col gap-4">
+              <div className="text-center">
+                <h3>No content available</h3>
+                <p>Please add some content to get started.</p>
+              </div>
+              <Button onClick={() => setOpen(true)} text="Add Content" />
+            </div>
+          )}
         </div>
       </div>
     </>
