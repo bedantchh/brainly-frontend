@@ -13,6 +13,7 @@ const Dashboard = () => {
   // }
   interface ContentItem {
     _id: string;
+    userTitle: string;
     title: string;
     link: string;
     type: "twitter" | "youtube";
@@ -83,6 +84,7 @@ const Dashboard = () => {
                 onError={(e) => console.error(e)}
               >
                 <Card
+                  userTitle={c.userTitle}
                   id={c._id}
                   link={c.link}
                   title={c.title}
