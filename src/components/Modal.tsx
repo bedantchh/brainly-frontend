@@ -83,6 +83,11 @@ const Modal = ({ open, onClose,onSubmitSuccess }: ModalProps) => {
                     active={isSelected === "twitter"}
                     text="Twitter"
                   />
+                  <ToggleButtons
+                    onClick={() => setSelected("link")}
+                    active={isSelected === "link"}
+                    text="Link"
+                  />
                 </div>
               </div>
               <Button onClick={handleSubmit} text="Add Memory" />
