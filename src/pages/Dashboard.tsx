@@ -17,6 +17,9 @@ const Dashboard = () => {
     title: string;
     link: string;
     type: "twitter" | "youtube";
+    userId: {
+      username: string;
+    };
   }
   interface ApiResponse {
     content: ContentItem[];
@@ -74,7 +77,8 @@ const Dashboard = () => {
         open={open}
         onClose={() => setOpen(false)}
       />
-      <div className="max-w-6xl mx-auto mt-12">
+      <div className="max-w-6xl mx-auto mt-8">
+        <div className="text-4xl text-white flex justify-center mb-6">Hey {userContent[0]?.userId?.username}</div>
         <div className="columns-1 md:columns-2 lg:columns-3 mx-auto gap-4 px-4 md:px-10">
           {userContent.length > 0 ? (
             userContent.map((c: ContentItem) => (
